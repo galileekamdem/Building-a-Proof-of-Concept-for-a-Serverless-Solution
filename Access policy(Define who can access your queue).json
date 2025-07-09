@@ -1,0 +1,37 @@
+{
+  "Version": "2012-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__owner_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::075617906240:root"
+      },
+      "Action": "SQS:*",
+      "Resource": "arn:aws:sqs:us-east-1:075617906240:POC-Queue"
+    },
+    {
+      "Sid": "__sender_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::075617906240:role/APIGateway-SQS"
+      },
+      "Action": "SQS:SendMessage",
+      "Resource": "arn:aws:sqs:us-east-1:075617906240:POC-Queue"
+    },
+    {
+      "Sid": "__receiver_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::075617906240:role/Lambda-SQS-DynamoDB"
+      },
+      "Action": [
+        "SQS:ChangeMessageVisibility",
+        "SQS:DeleteMessage",
+        "SQS:ReceiveMessage"
+      ],
+      "Resource": "arn:aws:sqs:us-east-1:075617906240:POC-Queue"
+    }
+  ]
+}
