@@ -2,10 +2,10 @@
 
 Building a Proof of Concept for a Serverless Solution
 
-📌 Overview
+Overview
 This project demonstrates a serverless architecture on AWS designed to handle scalable and decoupled web backend operations for an e-commerce platform selling cleaning supplies. The solution leverages AWS services like API Gateway, SQS, Lambda, DynamoDB, and SNS to ensure scalability, reliability, and real-time notifications.
 
-🏗️ Architecture
+ Architecture
 The architecture follows an event-driven workflow:
 
 API Gateway receives REST API requests and forwards them to Amazon SQS.
@@ -16,7 +16,7 @@ DynamoDB Streams captures changes and invokes a second Lambda (POC-Lambda-2).
 
 Lambda-2 publishes the record to Amazon SNS, sending email notifications to subscribers.
 
-🛠️ AWS Services Used
+ AWS Services Used
 API Gateway: REST API endpoint for client interactions.
 
 SQS: Decouples API Gateway from Lambda, ensuring message durability.
@@ -28,8 +28,7 @@ DynamoDB: NoSQL database with streams for real-time change capture.
 SNS: Pub/sub service for email notifications.
 
 IAM: Role-based permissions for secure access.
-
-🔧 Key Steps Implemented
+ Key Steps Implemented
 IAM Setup: Custom policies/roles for least-privilege access.
 
 DynamoDB Table: Created orders table with orderID as the partition key.
@@ -46,7 +45,7 @@ SNS Topic: Email subscription for order notifications.
 
 API Gateway: POST method to push data to SQS.
 
-🚀 Testing the Workflow
+Testing the Workflow
 Send a mock order (e.g., {"item": "latex gloves", "customerID": "12345"}) via API Gateway.
 
 Verify:
